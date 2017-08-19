@@ -82,6 +82,7 @@ UCS全称为"Universal Character Set"，在UCS中主要有`UCS-2`和`UCS-4`。
 
 UCS-2是定长字节的，固定使用2个字节进行编码，从`0000（十六进制）- FFFF（十六进制）`的码位范围，对应第一个Unicode平面。采用BOM(Byte Order Mark)机制，该机制作用如下：1. 确定字节流采用的是大端序还是小端序。2. 确定字节流的Unicode编码方案。
 
+
 #### UCS-4
 
 UCS-4是定长字节的，固定使用4个字节进行编码。也采用了BOM机制。
