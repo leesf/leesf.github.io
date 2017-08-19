@@ -3,8 +3,6 @@ title: 关于LEESF
 layout: page
 ---
 
-## 关于LEESF
-
 
 * 常浪迹于[cnblogs](http://www.cnblogs.com/leesf456)，但希望可以有自己的一亩三分地，遂驻足在此。
 
