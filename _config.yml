@@ -215,6 +215,7 @@ font:
 social:
   GitHub: https://github.com/leesf
   Twitter: https://twitter.com/leesf456
+  Lofter: http://leesf0315.lofter.com/
   
 
 
@@ -230,6 +231,10 @@ social_icons:
   GitHub: github
   Twitter: twitter
   Weibo: weibo
+  Lofter: lofter
+  
+# Specify the date when the site was setup
+since: 2017
 
 
 # Sidebar Avatar
