@@ -8,7 +8,7 @@ tags:
 - Java
 ---
 ## 前言
-> 对项目代码进行扫描时，发现静态扫描严重问题，发现是由于多线程环境下没有正确创建单例所导致。
+> 对项目代码进行扫描时，出现静态扫描严重问题，发现是由于多线程环境下没有正确创建单例所导致。
 
 ## 问题分析
 > 本项目使用的`JDK 1.7+`。
@@ -163,7 +163,7 @@ Thread1 com.hust.grid.leesf.mvnlearning.Test$Singleton@642c39d2
 > 每个线程有自己独立的工作空间，线程间进行通信是通过主内存完成的，想了解详细内容可参见如下链接:[内存模型](http://www.cnblogs.com/leesf456/p/5291484.html)或[深入理解java内存模型](http://files.cnblogs.com/skywang12345/%E6%B7%B1%E5%85%A5Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.pdf)。
 
 
-其原因分析如下，知道每个线程会有一份tmp后，就不难分析出原因。
+知道每个线程会有一份tmp拷贝后，配合打印输出，就不难分析出原因。
 
 ## 问题解决
 > 按照《Effective Java》一书中创建单例的推荐，可使用如下两种解决方法
@@ -280,7 +280,7 @@ Thread2 out outer if block
 Thread2 com.hust.grid.leesf.mvnlearning.Test$Singleton@13883d5f
 
 
-> 从结果中和线程运行步骤可以看到三个线程并发的情况下，只生成了唯一实例。
+**从结果中和线程运行步骤可以看到三个线程并发的情况下，只生成了唯一实例。**
 
 ### 静态内部类
 
@@ -350,7 +350,7 @@ Thread1 com.hust.grid.leesf.mvnlearning.Test$Singleton@71f801f7
 Thread0 com.hust.grid.leesf.mvnlearning.Test$Singleton@71f801f7  
 
 
-**该模式可保证使用时才会初始化变量，达到延迟初始化目的**
+**该模式可保证使用时才会初始化变量，达到延迟初始化目的。**
 
 ## 总结
 
