@@ -316,7 +316,7 @@ post_meta:
 # Post wordcount display settings
 post_wordcount:
   item_text: true
-  wordcount: true
+  wordcount: false
   min2read: false
   separated_meta: true
 
@@ -490,7 +490,7 @@ rating:
 leancloud_visitors:
   enable: true
   app_id: 9fuI2UizMRUYkaxgdsoksMnv-gzGzoHsz
-  app_key: dUxTKwW3ax8nnHCQMGRR4uz
+  app_key: dUxTKwW3ax8nnHCQdMGRR4uz
 
 # Show PV/UV of the website/page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
