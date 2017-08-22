@@ -87,13 +87,12 @@ public class Test {
 
 输出结果如下：
 
-```
 
-Thread1 com.hust.grid.leesf.mvnlearning.Test$Singleton@304e94a4  
+
+> Thread1 com.hust.grid.leesf.mvnlearning.Test$Singleton@304e94a4  
 Thread0 com.hust.grid.leesf.mvnlearning.Test$Singleton@304e94a4  
 Thread2 com.hust.grid.leesf.mvnlearning.Test$Singleton@304e94a4  
 
-```
 
 从结果看，都生成了同一个实例，似乎不存在问题，多线程环境下确实不太好重现问题，现改动代码如下：
 
@@ -134,9 +133,7 @@ static class Singleton {
 
 再次测试，输出结果如下：
 
-```
-
-Thread2 in outer if block  
+> Thread2 in outer if block  
 Thread1 in outer if block  
 Thread0 in outer if block  
 Thread2 in synchronized block  
@@ -158,9 +155,6 @@ Thread1 out synchronized block
 Thread1 out outer if block  
 Thread1 com.hust.grid.leesf.mvnlearning.Test$Singleton@642c39d2
 
-
-
-```
 
 从结果看，生成了3个不同的实例，并且每个线程都执行了完整的流程，并且可知单例的创建存在问题。在分析原因前简单了解下多线程模型，多线程模型如下：
 
@@ -264,9 +258,8 @@ public class Test {
 
 输出结果如下：
 
-```
 
-Thread0 in outer if block  
+> Thread0 in outer if block  
 Thread0 in synchronized block  
 Thread0 in inner if block  
 Thread2 in outer if block  
@@ -287,7 +280,6 @@ Thread2 out outer if block
 Thread2 com.hust.grid.leesf.mvnlearning.Test$Singleton@13883d5f
 
 
-```
 > 从结果中和线程运行步骤可以看到三个线程并发的情况下，只生成了唯一实例。
 
 ### 静态内部类
@@ -352,15 +344,13 @@ public class Test {
 
 运行结果如下：
 
-```
 
-Thread2 com.hust.grid.leesf.mvnlearning.Test$Singleton@71f801f7  
+> Thread2 com.hust.grid.leesf.mvnlearning.Test$Singleton@71f801f7  
 Thread1 com.hust.grid.leesf.mvnlearning.Test$Singleton@71f801f7  
-Thread0 com.hust.grid.leesf.mvnlearning.Test$Singleton@71f801f7
+Thread0 com.hust.grid.leesf.mvnlearning.Test$Singleton@71f801f7  
 
-```
 
-> 该模式也可保证使用时才会初始化变量，达到延迟初始化目的。
+**该模式可保证使用时才会初始化变量，达到延迟初始化目的**
 
 ## 总结
 
