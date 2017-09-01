@@ -18,7 +18,7 @@ tags:
 
 ### 示例
 
-### 原生`Java`
+### 原生Java示例
 
 ```java
 
@@ -49,7 +49,7 @@ public class OptionalTest {
 
 可以看到，其会在`sum`方法中报错，即当运行`i1 + i2`时报错，若不采取合适的判断非`null`方法，则该程序会报错。
 
-### `Guava`
+### Guava示例
 
 ```java
 
@@ -82,14 +82,14 @@ public class OptionalTest {
 
 ### 源码分析
 
-#### 创建非`Null`对象
+#### 创建非null对象
 
 > 根据`Guava`示例，来简单分析`Optional`的源码，其有**`Absent`**和**`Present`**两个子类，`Absent`代表`null`，`Present`则代表非`null`，当调用`Optional.of`方法时，其会创建`Present`对象。
 
 * `Optional.of`方法首先调用`checkNotNull(reference)`方法。当`reference`为`null`时，则直接抛出`NullPointerException`异常，否则创建`Present`对象。
 * `Present`对象中有`T reference`的变量用于保存非`null`值。
 
-#### 创建`null`对象
+#### 创建null对象
 > 除了创建非`null`对象外，还可以特意创建`null`对象，而创建`null`对象有两种方法，一种通过`fromNullable`方法，另一种通过`absent`方法。
 
 
