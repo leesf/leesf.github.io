@@ -9,7 +9,6 @@ tags:
 ---
 
 ## 前言
-
 > 在原生`Java`中，当对不同的类进行比较时，需要让类实现`Comparable`接口或者`Comparator`接口，其特别是在基于`Hash`实现的散列表中非常重要。而`Guava`实现了`Ordering`类，可以供开发者更方便地比较不同对象。
 
 ## Ordering

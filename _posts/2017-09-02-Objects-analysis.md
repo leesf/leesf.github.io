@@ -9,7 +9,6 @@ tags:
 ---
 
 ## 前言
-
 > `Java`中的`Object`提供了很多方法供所有的类使用，特别是`toString`、`hashCode`、`equals`、`getClass`等方法，在日常开发中作用很大，`Guava`中包含`Objects`类，其提供了很多更为强大的方法。
 
 ## Objects
