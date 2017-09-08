@@ -1,5 +1,5 @@
 ---
-title: Guava-不可变集合父类ImmutableCollection
+title: Guava-ImmutableCollection
 date: 2017-09-08 19:14:16
 categories:
 - technique
