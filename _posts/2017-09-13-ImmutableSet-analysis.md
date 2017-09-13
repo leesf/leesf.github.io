@@ -37,7 +37,7 @@ public class ImmutableSetTest {
 
 值得注意的是输出次序与插入顺序一致，这是由于底层遍历时会维护插入顺序，可以使用`of`方法直接构造`ImmutableSet`实例，也可通过`builder`方法进行构造。
 
-#### construct方法
+### construct方法
 > `ImmutableSet`对外提供`of`方法构建实例，`of`方法会调用`construct`方法。`construct`方法源码如下
 
 ```java
