@@ -1,6 +1,6 @@
 ---
 title: Spring-Bean装配
-date: 2017-09-15 18:18:16
+date: 2017-09-16 18:18:16
 categories:
 - technique
 tags:
