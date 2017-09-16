@@ -287,7 +287,7 @@ public CDPlayer cdPlayer(CompactDisc compactDisc) {
 
 #### 使用构造器注入初始化bean
 
-##### 使用<constructor-arg>元素
+##### 使用constructor-arg元素
 
 ```xml
 
