@@ -173,9 +173,11 @@ public class CDPlayerTest {
 > 上述示例中`bean`的名称默认为`sgtPeppers`，即将类名的首字母小写，当然可通过`@Component("sp")`设置其名称为`sp`；或者使用`@Named("sp")`进行设置。
 
 #### 设置组建扫描基础包
+
 > 上述示例中指定扫描`ch2`包，这是通过`@ComponentScan("ch")`指定的，当然可以通过`@ComponentScan(basePackages="ch2")`进行设置。若设置多个包，则可采用`@ComponentScan(basePackages={"ch2","video"})`方式进行设置。除了使用字符串格式表明包名，也可使用类名格式，如`@ComponentScan(basePackageClasses = SgtPeppers.class)`指定扫描类。
 
 #### 设置自动装配
+
 > 示例中使用`@Autowired`实现自动装配，`Spring`应用上下文中寻找某个匹配的`bean`，由于示例中`CompactDisc`只有一个声明为`bean`的子类，若有多个声明为`bean`的子类，则会报错，若没有子类，也会报错。`@Autowired`注解不仅可以用在**属性**上，也可以用在**构造函数**上，还可以用在**Setter**方法上。若使用`@Autowired(required=false)`时，那么没有符合的`bean`时不会报错，而是处于未装配的状态，要防止空指针情况，其与`@Inject`注解功能类似。
 
 * 构造函数使用`@Autowired`注解
@@ -211,6 +213,7 @@ public void setCompactDisc(CompactDisc cd) {
 ```
 
 ### 在Java中显式配置
+
 > 在配置类中显式配置`bean`，将`CDPlayerConfig`中的`@ComponentScan("ch2")`移除，此时运行测试用例会报错，下面通过显式配置方法来配置`bean`。修改`CDPlayerConfig`代码如下。
 
 ```java
@@ -295,7 +298,7 @@ public CDPlayer cdPlayer(CompactDisc compactDisc) {
 ```
 上述代码表示将`ID`为`compactDisc`的`bean`引用传递到`CDPlayer`的构造器中。
 
-##### 使用`c-`命令空间
+##### 使用c-命令空间
 
 ```xml
 
@@ -329,7 +332,7 @@ public CDPlayer cdPlayer(CompactDisc compactDisc) {
 
 ##### 装配集合到构造器中
 
-##### 装配字面量到`List`集合
+##### 装配字面量到List集合
 
 ```xml
 
@@ -347,7 +350,7 @@ public CDPlayer cdPlayer(CompactDisc compactDisc) {
 
 ```
 
-##### 装配引用`List`集合
+##### 装配引用List集合
 
 
 ```xml
@@ -379,7 +382,7 @@ public CDPlayer cdPlayer(CompactDisc compactDisc) {
 
 ```
 
-##### 使用`p-`命令空间进行装配
+##### 使用p-命令空间进行装配
 
 ```xml
 <bean id="cdPlayer" class="ch2.CDPlayer"
@@ -408,7 +411,7 @@ public CDPlayer cdPlayer(CompactDisc compactDisc) {
 
 ```
 
-##### 使用`p-`装配属性
+##### 使用p-装配属性
 
 ```xml
 
@@ -426,7 +429,7 @@ public CDPlayer cdPlayer(CompactDisc compactDisc) {
 
 ```
 
-##### 使用`util-`命名空间装配集合
+##### 使用util-命名空间装配集合
 
 ```xml
 
