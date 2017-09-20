@@ -9,7 +9,7 @@ tags:
 ---
 
 ## 前言
-> 分析完`ImmutableSet`之后，接着分析`ImmutableList`，从字面上可知其是不可变的列表，可根据索引获取对应项，由于其在创建后不可变，底层可以使用数组来存储，这样会访问效率。
+> 分析完`ImmutableSet`后，接着分析`ImmutableList`，从字面上可知其是不可变的列表，可根据索引获取对应项，由于其在创建后不可变，底层可以使用数组来存储，这样会访问效率。
 
 ## ImmutableList
 > `ImmutableList`类实现了`ImmutableCollection`接口和`List`接口，可以使用`of`方法或者`builder`配合`build`方法创建`ImmutableList`实例。
