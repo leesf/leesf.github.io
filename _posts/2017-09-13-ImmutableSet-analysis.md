@@ -12,9 +12,11 @@ tags:
 > 介绍完`ImmutableCollection`后，接着看看`ImmutableSet`，其表示不可变哈希集合，即创建后无法对集合再进行修改操作，并且`ImmutableSet`会使用一个数组(可变参数数组)维护插入顺序，即当遍历时会按照插入顺序输出。
 
 ## ImmutableSet
+
 > `ImmutableSet`类实现了`ImmutableCollection`接口和`Set`接口，可以使用`of`方法创建`ImmutableSet`实例。
 
 ### 示例
+
 ```java
 
 import com.google.common.collect.ImmutableSet;
@@ -28,6 +30,7 @@ public class ImmutableSetTest {
         System.out.println(strings);
     }
 }
+
 
 ```
 

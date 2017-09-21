@@ -67,3 +67,13 @@ tags:
 * 可使用`df`命令查看磁盘的使用情况。
 
 ## 文件与文件系统压缩和打包
+
+* 使用`tar -zcvf git.tar.gz git/`命令压缩`git`目录至`git.tar.gz`。
+* 使用`tar -zxvf git.tar.gz`命令解压缩`git.tar.gz`至本目录下。
+
+## Vim编辑器
+
+* `G(Shift+g)`移动到最后一行，`gg`移动到第一行。
+* `dd`删除光标所在的一整行。
+* `x`向后删除一个字符(`Del`)，`X`向前删除一个字符(`Backspace`)。
+
