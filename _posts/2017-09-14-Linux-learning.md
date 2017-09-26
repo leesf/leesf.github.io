@@ -37,7 +37,7 @@ tags:
 
 ## 文件权限和目录配置
 
-![Markdown](http://i1.bvimg.com/607346/d366183dc6a80131.png)
+![Markdown](https://raw.githubusercontent.com/leesf/blogPhotos/master/file-permissions.png)
 
 > 分为七列，分别代表`文件权限`、`连接数`、`文件所有者`、`文件所属用户组`、`文件大小`、`文件最后被修改的时间`、`文件名`。
 
