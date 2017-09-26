@@ -77,3 +77,21 @@ tags:
 * `dd`删除光标所在的一整行。
 * `x`向后删除一个字符(`Del`)，`X`向前删除一个字符(`Backspace`)。
 
+## 认识学习Bash
+
+* 对于变量赋值而言，等号两边不能接空格，如`myname = leesf`会报错。
+* 使用`bash`可以进入子进程，但进程的自定义变量无法在子进程内使用，`exit`退出子进程，通过`export`将变量变成环境变量后，就能够在子进程中使用。
+* 使用`set`可查看所有变量（含环境变量和自定义变量）
+* 使用`set | grep HISTFILE`可查看历史命令记录的放置文件和历史命令记录大小。
+* 使用`echo $?`查看上个命令执行的回传码（若执行成功，返回0，否则为非0）。
+* 使用`echo $$`可以查看本`PID`。
+* 使用`alias cls='clear'`设置清屏的别名。
+* 使用`history`可以显示所有历史命令。
+* 使用`!!`或者`向上箭头+Enter`执行上一条命令。
+* 使用`!al`执行最近以al为开头的命令。
+* 可修改`~/.bashrc`或`~/.bash_profile`文件进行个人设置，并使用`source ~/.bashrc`或`source ~/.bash_profile`使其生效，有时可能需要重新登出登入操作，登出使用`exit`即可。
+* 标准输入代码为`0`，使用`<或<<`；标准输出代码为`1`，使用`>或>>`；标准错误输出代码为`2`，使用`2>或2>>`。其中`>>`表示累加，`>`表示覆盖。
+* 使用`/dev/null`将`stderr`信息丢弃，如`find /home -name .bashrc 2> /dev/null`，表示将`stderr`丢弃。
+* 若想将错误信息和正确信息都写进同一文件中，需使用特殊用法，如`find /home -name .bashrc > list 2>&1`或者`find /home -name .bashrc &> list`。
+* `cat > catfile < ~/.bashrc`将`~/.bashrc`的内容输出至`catfile`中。
+* `cat > catfile << "eof"`使用`eof`作为结束输入控制符。
