@@ -101,3 +101,4 @@ tags:
 * 管道命令仅会处理`standard output`，对于`standard error output`予以忽略。
 * 常见的管道命令如下，`cut`、`grep`、`sort`、`wc`、`uniq`、`tee`等。
 * 使用`tar -cvf - /home | tar -xvf -`，可将`/home`打包后再解压到当前目录。
+* 
