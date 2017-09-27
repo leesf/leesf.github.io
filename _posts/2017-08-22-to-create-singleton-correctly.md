@@ -158,7 +158,7 @@ Thread1 com.hust.grid.leesf.mvnlearning.Test$Singleton@642c39d2
 
 从结果看，生成了3个不同的实例，并且每个线程都执行了完整的流程，并且可知单例的创建存在问题。在分析原因前简单了解下多线程模型，多线程模型如下：
 
-![多线程内存模型](http://i1.bvimg.com/607346/f52b76dacf4c3c05.png)
+![多线程内存模型](https://raw.githubusercontent.com/leesf/blogPhotos/master/thread-model.png)
 
 > 每个线程有自己独立的工作空间，线程间进行通信是通过主内存完成的，想了解详细内容可参见如下链接:[内存模型](http://www.cnblogs.com/leesf456/p/5291484.html)或[深入理解java内存模型](http://files.cnblogs.com/skywang12345/%E6%B7%B1%E5%85%A5Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.pdf)。
 
