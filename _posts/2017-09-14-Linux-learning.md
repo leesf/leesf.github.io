@@ -95,3 +95,9 @@ tags:
 * 若想将错误信息和正确信息都写进同一文件中，需使用特殊用法，如`find /home -name .bashrc > list 2>&1`或者`find /home -name .bashrc &> list`。
 * `cat > catfile < ~/.bashrc`将`~/.bashrc`的内容输出至`catfile`中。
 * `cat > catfile << "eof"`使用`eof`作为结束输入控制符。
+* 可将多个命令组合一次性执行，如`ll;ll;shutdown -h now`，先执行两次`ll`，然后执行关机操作。
+* 可根据上个命令执行状态确定下个命令是否执行，上个命令回传码为`0`表示成功，非`0`表示失败。
+* `cmd1 && cmd2`表示若`cmd1`执行完毕且正确执行，则执行`cmd2`，否则不执行`cmd2`；`cmd1 || cmd2`表示`cmd1`执行完毕且正确执行，则不执行`cmd2`，否则执行`cmd2`。
+* 管道命令仅会处理`standard output`，对于`standard error output`予以忽略。
+* 常见的管道命令如下，`cut`、`grep`、`sort`、`wc`、`uniq`、`tee`等。
+* 使用`tar -cvf - /home | tar -xvf -`，可将`/home`打包后再解压到当前目录。
