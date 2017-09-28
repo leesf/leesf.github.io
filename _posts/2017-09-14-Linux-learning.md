@@ -101,4 +101,9 @@ tags:
 * 管道命令仅会处理`standard output`，对于`standard error output`予以忽略。
 * 常见的管道命令如下，`cut`、`grep`、`sort`、`wc`、`uniq`、`tee`等。
 * 使用`tar -cvf - /home | tar -xvf -`，可将`/home`打包后再解压到当前目录。
-* 
+* 使用`sed -i 's/This is/That is/g' test`将`test`文件中所有`This is`替换成`That is`。
+* 使用`sed -i '$a the end' test`可以在`test`文件末尾添加`the end`，其中`$`表示最后一行，`a`表示`新增`。
+* 使用`awk`命令处理每行的数据。如`awk '{FS=":"} $1 "\t" $3'`表示自定义分隔符为`:`，并将第一列与第三列输出。
+* 使用`diff test1 test`查看`test`和`test1`之间的异同。
+
+## 学习Shell Script
