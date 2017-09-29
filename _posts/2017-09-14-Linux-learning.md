@@ -107,3 +107,9 @@ tags:
 * 使用`diff test1 test`查看`test`和`test1`之间的异同。
 
 ## 学习Shell Script
+
+* `shell.sh`文件必须要具备可读可执行(`rx`)权限。
+* `script`脚本第一行`#!/bin/bash`声明了这个`script`使用的`shell`名称。
+* 使用`source test.sh`和`sh test.sh`执行时，前者是直接在父进程中运行，变量再父进程中有效，后者在子进程中运行，父进程中无效。
+* 可在`sh test.sh`后面接参数，并使用`$#、$1、$2...`等进行获取，其中`$0`表示执行的`shell`脚本名。;
+* 对于某些机器而言，需要使用`bash test.sh`执行脚本。
