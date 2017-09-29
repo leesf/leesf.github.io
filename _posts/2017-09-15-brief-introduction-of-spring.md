@@ -13,7 +13,7 @@ tags:
 
 ## Spring框架
 
-![Markdown](http://i2.bvimg.com/607346/ade8dfd8cdd67a16.png)
+![Markdown](https://raw.githubusercontent.com/leesf/blogPhotos/master/spring-framework.jpg)
 
 * 核心容器：容器提供`Spring`框架的基本功能。主要组件是`BeanFactory`，它是工厂模式的实现，提供`DI`功能，其管理`Bean`创建、配置、管理。
 * AOP：`Spring`对面向切面编程提供了丰富的支持，该模块是`Spring`应用系统中开发切面的基础。
