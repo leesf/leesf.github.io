@@ -15,9 +15,9 @@ NexT 是由 [Hexo NexT](https://github.com/iissnan/hexo-theme-next) 移植而来
 
 ## 记录 Records
 
-该Repo主要用于记录平时的学习轨迹，顺便在Git上打卡
+该Repo主要用于记录平时的学习轨迹，顺便在Git上打卡，做个勤奋和高效利用时间的人。
 
 ## 感谢 Thanks
 
-衷心感谢开发者，分享无价
+衷心感谢该主题的开发者和分享者，分享无价。
 
