@@ -74,6 +74,19 @@ tags:
 
 ![](https://raw.githubusercontent.com/leesf/blogPhotos/master/project-structure.png)
 
+### 修改pom文件
+
+> 由于`Web`应用的打包的方式是`war`，所以需要在`pom.xml`文件中申明为`war`打包方式，需在`pom.mxl`添加`<packaging>war</packaging>`。类似如下
+
+```xml
+
+    <groupId>com.hust.grid.leesf</groupId>
+    <artifactId>springproject</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+```
+
 ### 配置Tomcat
 
 > 接下配置`Tomcat`的`Servlet容器`。
