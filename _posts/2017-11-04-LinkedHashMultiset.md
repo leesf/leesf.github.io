@@ -109,7 +109,7 @@ dyd : 1
 
 ```
 
-> 可以看到其主要是通过`backingMap`提供支持，其为`LinkedHashMap<String, Count>`类型，`Count`对象中封装了出现的次数和对次数进行获取和改变的操作，`LinkedHashMap<String, Count>`维护插入顺序。
+可以看到其主要是通过`backingMap`提供支持，其为`LinkedHashMap<String, Count>`类型，`Count`对象中封装了出现的次数和对次数进行获取和改变的操作，`LinkedHashMap<String, Count>`维护插入顺序。
 
 ### remove方法
 
