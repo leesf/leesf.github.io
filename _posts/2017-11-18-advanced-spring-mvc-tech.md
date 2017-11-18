@@ -1,6 +1,6 @@
 ---
 title: Traceroute
-date: 2017-11-14 19:01:16
+date: 2017-11-18 19:01:16
 categories:
 - technique
 tags:
@@ -174,6 +174,176 @@ public class MyServletInitializer implements WebApplicationInitializer {
 ```
 
 ### 处理multipart形式数据
+
+处理`multipart`数据主要用于处理文件上传操作。需要配置`multipart`解析器读取`multipart`请求。
+
+#### 配置multipart解析器
+
+`DispatcherServlet`并未实现任何解析`multipart`请求数据功能，它只是将任务委托给`MultipartResolver`策略接口实现，通过该实现解析`multipart`请求内容，`Spring`中内置了`CommonsMultipartResolver`和`StandardServletMultipartResolver`两个解析器。
+
+* 使用StandardServletMultipartResolver
+
+使用`Java`配置如下
+
+```java
+
+@Override
+
+protected void customizeRegistration(Dynamic registration) {
+	registration.setMultipartConfig(new MultipartConfigElement("/tmp/spittr/uploads", 2 * 1024 * 1024, 4 * 1024 * 1024, 0));
+}
+
+```
+
+使用`xml`配置如下，在`servlet`标签中配置`multipart-config`。
+
+```xml
+
+      <multipart-config>
+        <location>/tmp/spittr/uploads</location>
+        <max-file-size>2 * 1024 * 1024</max-file-size>
+        <max-request-size>4 * 1024 * 1024</max-request-size>
+      </multipart-config>
+
+```
+
+* 使用CommonsMultipartResolver
+
+使用`Java`配置如下
+
+``` java
+
+    @Bean
+    public MultipartResolver multipartResolver() throws IOException {
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setUploadTempDir(new FileSystemResource("/tmp/spittr/uploads"));
+
+        return commonsMultipartResolver;
+    }
+
+```
+
+#### 处理multipart请求
+
+可在控制器的方法参数上添加`@RequestPart`注解，如下所示。
+
+```java
+
+@RequestMapping(value="/register", method=POST)
+public String processRegistration(
+	@RequestPart("profilePicture") byte[] profilePicture,
+	@Valid Spittr spitter,
+	Errors errors) {
+	profilePicture.transferTo(new File("/data/spittr" + profilePicture.getOriginalFilename()));
+}
+
+```
+
+### 处理异常
+
+`Spring`提供了多种方式将异常转换为响应
+
+* 特定的异常将会自动映射为指定的`HTTP`状态码。
+* 异常上可以添加`@ResponseStatus`注解，从而将其映射为某个`HTTP`状态码。
+* 在方法上可添加`@ExceptionHandler`注解，使其用来处理异常。
+
+#### 将异常映射为HTTP状态码
+
+`Spring`异常与状态码对应关系如下。
+
+![](https://raw.githubusercontent.com/leesf/blogPhotos/master/spring-learning/advanced-web-mvc/exception2httpstatus.png)
+
+#### 编写异常处理方法
+
+可在请求中直接使用`try/catch`处理异常，其与正常`Java`方法中的`try/catch`相同，同时，也可编写处理器来处理特定异常，当出现特定异常时，将有处理器委托方法进行处理。
+
+```java
+
+@ExceptionHandler(DuplicateSpittleException.class)
+public String handleDuplicateSpittle() {
+	return "error/duplicate";
+}
+
+```
+
+### 为控制器添加通知
+
+控制器通知是任意带有`@ControllerAdvice`注解的类，该类包含如下类型的一个或多个方法。
+
+* `@ExceptionHandler`注解标注的方法。
+* `@InitBinder`注解标注的方法。
+* `@ModelAttribute`注解标注的方法。
+
+上面方法会运用到整个应用程序所有控制器中带有`@RequestMapping`注解的方法上。
+
+```java
+
+@ControllerAdvice
+public class AppWideExceptionHandler {
+	@ExceptionHandler(DuplicateSpittleException.class)
+	public String duplicateSpittleHandler() {
+		return "error/duplicate";
+	}
+}
+
+```
+
+经过上述配置，任意控制器方法抛出了`DuplicateSpittleException`异常，都会调用这个`duplicateSpittleHandler`方法处理异常。
+
+### 跨重定向请求传递数据
+
+对于重定向而言，若需要从发起重定向的方法传递数据给处理重定向方法中，有如下两种方法
+
+* 使用`URL`模版以路径变量和/或查询参数形式传递数据。
+* 通过`flash`属性发送数据。
+
+#### 通过URL模版进行重定向
+
+如前面讲到的通过`redirect:/spitter/{username}`进行重定向，该方法会直接根据`username`确定`url`，并非十分安全的做法，可使用进行如下处理。
+
+```java
+
+model.addAttribute("username", spitter.getUsername());
+return "redirect:/spitter/{username}";
+
+```
+
+当需要传递参数，如id时，可进行如下处理。
+
+```java
+
+model.addAttribute("username", spitter.getUsername());
+model.addAttribute("spitterId", spitter.getId());
+return "redirect:/spitter/{username}";
+
+```
+
+若`username`为`leesf`；`id`为`123456`。这样访问的`url`为`/spitter/leesf?spitterId=123456`。这种方法只能传递简单的值，无法发送更为复杂的值，此时需要使用`flash`属性。
+
+#### 使用flash属性
+
+通过`RedirectAttributes`设置`flash`属性，这样可直接传递对象。
+
+```java
+
+@ReuqestMapping(value="/register", method=POST)
+public String processRegistration(Spitter spitter, RedirectAttributes model) {
+	spitterRepository.save(spitter);
+	model.addAttribute("username", spitter.getUsername());
+	model.addFlashAttribute("spitter", spitter);
+	return "redirect:/spitter/{username}";
+}
+
+```
+
+这样`spitter`对象也被传递到重定向页面中，可直接访问`spitter`对象。
+
+## 总结
+
+本篇博文讲解了如何配置`DispatcherServlet`和`ContextLoaderListener`，以及如何处理异常和控制器通知，最后分析如何在重定向时传递数据。
+
+
+
 
 
 
