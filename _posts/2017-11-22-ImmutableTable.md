@@ -9,7 +9,7 @@ tags:
 ---
 
 ## 前言
-在学习了`HashBiMap`后，接着学习`ImmutableTable`，该类由行和列共同确定一个元素，类似于表格。
+在学习`HashBiMap`后，接着学习`ImmutableTable`，该类由行和列共同确定一个元素，类似于表格。
 
 
 ## ImmutableTable
