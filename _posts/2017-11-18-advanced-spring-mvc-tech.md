@@ -340,7 +340,7 @@ public String processRegistration(Spitter spitter, RedirectAttributes model) {
 
 ## 总结
 
-本篇博文讲解了如何配置`DispatcherServlet`和`ContextLoaderListener`，以及如何处理异常和控制器通知，最后分析如何在重定向时传递数据。
+本篇博文讲解了如何配置`DispatcherServlet`和`ContextLoaderListener`，以及如何处理异常和控制器通知，最后分析如何在重定向时传递数据，有兴趣的读者可以更深入的学习。
 
 
 
