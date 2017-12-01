@@ -14,7 +14,7 @@ tags:
 
 ## ImmutableTable
 
-`ImmutableTable`实现`Table`接口，`Table`接口中定义了表格操作规范，需要具体的子类实现。
+`ImmutableTable`实现`Table`接口，`Table`接口中定义了表格操作规范，具体方法需要子类实现。
 
 ### 示例
 
