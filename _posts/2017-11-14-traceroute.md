@@ -9,7 +9,7 @@ tags:
 ---
 
 ## 前言
-> 与前面的`ping`命令类似，还存在一个`traceroute`命令，其基于`UDP`协议。
+> 与前面学习的`ping`命令类似，还存在一个`traceroute`命令，其基于`UDP`协议。
 
 ## Traceroute
 
