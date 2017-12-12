@@ -9,7 +9,7 @@ tags:
 - Dynamic Table
 ---
 
-# Streaming Concepts
+# 流概念
 
 ## Data Streams上的关系查询
 
@@ -332,7 +332,7 @@ qConfig.withIdleStateRetentionTime(Time.hours(12);
 
 ## 参考链接
 
-[](https://ci.apache.org/projects/flink/flink-docs-release-1.3/dev/table/streaming.html)
+[https://ci.apache.org/projects/flink/flink-docs-release-1.3/dev/table/streaming.html](https://ci.apache.org/projects/flink/flink-docs-release-1.3/dev/table/streaming.html)
 
 
 
