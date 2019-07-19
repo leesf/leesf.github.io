@@ -6,7 +6,7 @@ layout: page
 
 * 常浪迹于[cnblogs](http://www.cnblogs.com/leesf456)。
 
-* 就职**`Tencent`**, 从事**`大数据`**相关开发。
+* 就职于**`Tencent`**, 从事**`大数据`**相关开发工作。
 
 * 相信技术改变世界，但认为生活的维度不只有技术。
 
