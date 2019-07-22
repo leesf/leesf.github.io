@@ -1,4 +1,3 @@
-```
 ---
 title: 深入理解Flink-On-Yarn模式
 date: 2019-07-22 09:48:18
@@ -7,7 +6,6 @@ categories:
 tags:
 - Flink
 ---
-```
 
 # 1. 前言
 
