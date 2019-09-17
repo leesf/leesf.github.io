@@ -1,6 +1,7 @@
 ---
 title: 深入理解Flink-On-Yarn模式
 date: 2019-07-22 09:48:18
+permalink: /cn/Flink-On-Yarn.html
 categories:
 - technique
 tags:
