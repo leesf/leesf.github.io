@@ -1,6 +1,7 @@
 ---
 title: Flink 底层RPC框架分析
 date: 2019-07-19 16:48:18
+permalink: /tech/flink-rpc-analysis.html
 categories:
 - technique
 tags:
