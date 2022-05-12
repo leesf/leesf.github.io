@@ -1,3 +1,14 @@
+---
+title: Apache Hudi 如何加速传统批处理模式
+date: 2022-05-12 21:38:18
+permalink: /tech/how-hudi-accelerate-batch-processing.html
+categories:
+- technique
+tags:
+- Hudi
+- 大数据
+---
+
 # 1. 现状说明
 ## 1.1 数据湖摄取和计算过程 - 处理更新
 在我们的用例中1-10% 是对历史记录的更新。当记录更新时，我们需要从之前的 updated_date 分区中删除之前的条目，并将条目添加到最新的分区中，在没有删除和更新功能的情况下，我们必须重新读取整个历史表分区 -> 去重数据 -> 用新的去重数据覆盖整个表分区
