@@ -1,6 +1,6 @@
 ---
 title: Apache Hudi 如何加速传统批处理模式
-date: 2022-05-12 23:04:18
+date: 2022-05-13 23:04:18
 permalink: /tech/how-hudi-accelerate-batch-processing.html
 categories:
 - technique
