@@ -1,6 +1,6 @@
 ---
 title: Apache Hudi 如何处理棘手的小文件问题
-date: 2022-05-17 19:04:18
+date: 2022-05-17 22:04:18
 categories:
 - technique
 tags:
@@ -41,15 +41,15 @@ Apache Hudi是一个流行的开源的数据湖框架，Hudi提供的一个非�
 
 假设配置的`hoodie.parquet.max.file.size`为120MB，`hoodie.parquet.small.file.limit`为100MB。File_1大小为40MB，File_2大小为80MB，File_3是90MB，File_4是130MB，File_5是105MB，当有新写入时其流程如下：
 
-**步骤一：**将更新分配到指定文件，这一步将查找索引来找到相应的文件，假设更新会增加文件的大小，会导致文件变大。当更新减小文件大小时（例如使许多字段无效），则随后的写入将文件将越来越小。
+**步骤一：** 将更新分配到指定文件，这一步将查找索引来找到相应的文件，假设更新会增加文件的大小，会导致文件变大。当更新减小文件大小时（例如使许多字段无效），则随后的写入将文件将越来越小。
 
-**步骤二：**根据`hoodie.parquet.small.file.limit`决定每个分区下的小文件，我们的示例中该配置为100MB，所以小文件为File_1、File_2和File_3；
+**步骤二：** 根据`hoodie.parquet.small.file.limit`决定每个分区下的小文件，我们的示例中该配置为100MB，所以小文件为File_1、File_2和File_3；
 
-**步骤三：**确定小文件后，新插入的记录将分配给小文件以便使其达到120MB，File_1将会插入80MB大小的记录数，File_2将会插入40MB大小的记录数，File_3将插入30MB大小的记录数。
+**步骤三：** 确定小文件后，新插入的记录将分配给小文件以便使其达到120MB，File_1将会插入80MB大小的记录数，File_2将会插入40MB大小的记录数，File_3将插入30MB大小的记录数。
 
 ![](https://raw.githubusercontent.com/leesf/leesf.github.io/master/pics/hudi-small-files-pic-2.png)
 
-**步骤四：**当所有小文件都分配完了对应插入记录数后，如果还有剩余未分配的插入记录，这些记录将分配给新创建的FileGroup/数据文件。数据文件中的记录数由`hoodie.copyonwrite.insert.split.size`（或者由之前的写入自动推算每条记录大小，然后根据配置的最大文件大小计算出来可以插入的记录数）决定，假设最后得到的该值为120K（每条记录大小1K），如果还剩余300K的记录数，将会创建3个新文件（File_6，File_7，File_8），File_6和File_7都会分配120K的记录数，File_8会分配60K的记录数，共计60MB，后面再写入时，File_8会被认为小文件，可以插入更多数据。
+**步骤四：** 当所有小文件都分配完了对应插入记录数后，如果还有剩余未分配的插入记录，这些记录将分配给新创建的FileGroup/数据文件。数据文件中的记录数由`hoodie.copyonwrite.insert.split.size`（或者由之前的写入自动推算每条记录大小，然后根据配置的最大文件大小计算出来可以插入的记录数）决定，假设最后得到的该值为120K（每条记录大小1K），如果还剩余300K的记录数，将会创建3个新文件（File_6，File_7，File_8），File_6和File_7都会分配120K的记录数，File_8会分配60K的记录数，共计60MB，后面再写入时，File_8会被认为小文件，可以插入更多数据。
 
 ![](https://raw.githubusercontent.com/leesf/leesf.github.io/master/pics/hudi-small-files-pic-3.png)
 
